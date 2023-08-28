@@ -1,3 +1,18 @@
+
+在Apple Silicon 編譯
+解決INT_MAX error
+1. edit librtmp/hashswf.c
+   add #include <limits.h>
+2. edit librtmp/rtmp.c
+   add #include <limits.h>
+
+修改Makefile and librtmp/Makefile裡面的prefix路徑，以符合編譯ffmpeg --enable-librtmp的需求
+
+編譯命令：
+目前先暫時 disable crypto，所以無法使用rtmps or https
+make CRYPTO= SYS=darwin
+
+
 RTMP Dump v2.4
 (C) 2009 Andrej Stepanchuk
 (C) 2009-2011 Howard Chu
